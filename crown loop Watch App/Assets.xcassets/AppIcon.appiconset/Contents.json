@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "Crown Loop.png",
       "idiom" : "universal",
       "platform" : "watchos",
       "size" : "1024x1024"
