@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/master.swiftdeps"
+  },
+  "/Users/ahmadreza/Documents/Development/project/crown loop/Sources/CrownLoop/GameEngine.swift": {
+    "dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.d",
+    "object": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.swift.o",
+    "swiftmodule": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.swiftdeps"
+  }
+}

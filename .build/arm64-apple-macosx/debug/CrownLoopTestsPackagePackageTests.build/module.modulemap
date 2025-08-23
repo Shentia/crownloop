@@ -1,0 +1,4 @@
+module CrownLoopTestsPackagePackageTests {
+    header "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/CrownLoopTestsPackagePackageTests-Swift.h"
+    requires objc
+}

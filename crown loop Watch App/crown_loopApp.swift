@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct crown_loop_Watch_AppApp: App {
+    @StateObject private var engine = GameEngine()
+    private let gk = GameCenterManager.shared
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainMenuView(engine: engine)
+                .onAppear {
+                    gk.authenticate()
+                }
         }
     }
 }

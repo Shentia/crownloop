@@ -1,0 +1,597 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.xctest/Contents/MacOS/CrownLoopTestsPackagePackageTests",
+      "packagePath" : "/Users/ahmadreza/Documents/Development/project/crown loop",
+      "productName" : "CrownLoopTestsPackagePackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.CrownLoop-arm64-apple-macosx16.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/sources",
+      "importPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/Sources/CrownLoop/GameEngine.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "CrownLoop",
+      "moduleOutputPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoop.swiftmodule",
+      "objects" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/CrownLoop-Swift.h",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g"
+      ],
+      "outputFileMapPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoop.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/Sources/CrownLoop/GameEngine.swift"
+      ],
+      "tempsPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.CrownLoopTests-arm64-apple-macosx16.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/sources",
+      "importPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/Tests/CrownLoopTests/GameEngineTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoop.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "CrownLoopTests",
+      "moduleOutputPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoopTests.swiftmodule",
+      "objects" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-color-diagnostics",
+        "-swift-version",
+        "5",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g"
+      ],
+      "outputFileMapPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoopTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/Tests/CrownLoopTests/GameEngineTests.swift"
+      ],
+      "tempsPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.CrownLoopTestsPackagePackageTests-arm64-apple-macosx16.0-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/sources",
+      "importPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoopTests.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "CrownLoopTestsPackagePackageTests",
+      "moduleOutputPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoopTestsPackagePackageTests.swiftmodule",
+      "objects" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/runner.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx13.0",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-Xfrontend",
+        "-enable-cross-import-overlays",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/CrownLoopTestsPackagePackageTests-Swift.h",
+        "-color-diagnostics",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g"
+      ],
+      "outputFileMapPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/runner.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules/CrownLoopTestsPackagePackageTests.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift"
+      ],
+      "tempsPath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "CrownLoop" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "CrownLoop",
+      "-incremental",
+      "-c",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/Sources/CrownLoop/GameEngine.swift",
+      "-I",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/CrownLoop-Swift.h",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "CrownLoopTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "CrownLoopTests",
+      "-incremental",
+      "-c",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/Tests/CrownLoopTests/GameEngineTests.swift",
+      "-I",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-color-diagnostics",
+      "-swift-version",
+      "5",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ],
+    "CrownLoopTestsPackagePackageTests" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "CrownLoopTestsPackagePackageTests",
+      "-incremental",
+      "-c",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift",
+      "-I",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx13.0",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-Xfrontend",
+      "-enable-cross-import-overlays",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/CrownLoopTestsPackagePackageTests-Swift.h",
+      "-color-diagnostics",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/PrivateFrameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "CrownLoop" : [
+
+    ],
+    "CrownLoopTests" : [
+      "CrownLoop"
+    ],
+    "CrownLoopTestsPackagePackageTests" : [
+      "CrownLoopTests",
+      "CrownLoop"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift" : {
+      "inputs" : [
+
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift"
+        }
+      ]
+    }
+  },
+  "traitConfiguration" : {
+    "enableAllTraits" : false
+  },
+  "writeCommands" : {
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/Sources/CrownLoop/GameEngine.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/sources"
+    },
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/Tests/CrownLoopTests/GameEngineTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/sources"
+    },
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.derived/runner.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/sources"
+    },
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/GameEngine.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.build/runner.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTestsPackagePackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

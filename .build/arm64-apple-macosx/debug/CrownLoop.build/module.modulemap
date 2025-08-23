@@ -1,0 +1,4 @@
+module CrownLoop {
+    header "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoop.build/CrownLoop-Swift.h"
+    requires objc
+}

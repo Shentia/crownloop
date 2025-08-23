@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/master.swiftdeps"
+  },
+  "/Users/ahmadreza/Documents/Development/project/crown loop/Tests/CrownLoopTests/GameEngineTests.swift": {
+    "dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.d",
+    "object": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.swift.o",
+    "swiftmodule": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/ahmadreza/Documents/Development/project/crown loop/.build/arm64-apple-macosx/debug/CrownLoopTests.build/GameEngineTests.swiftdeps"
+  }
+}
