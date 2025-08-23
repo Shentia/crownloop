@@ -21,6 +21,9 @@ final class GameEngine: ObservableObject {
     /// Current hit streak.
     @Published var streak: Int = 0
 
+    /// Current strike count (consecutive misses within time window).
+    @Published var strikes: Int = 0
+
     /// Persisted high score (loaded/saved via UserDefaults with key "highScore").
     @Published var highScore: Int = 0
 
@@ -92,6 +95,16 @@ final class GameEngine: ObservableObject {
 
     /// Hit tolerance in degrees.
     private let hitToleranceDegrees: Double = 8.0
+
+    /// Maximum strikes before automatic game over (baseball-style).
+    private let maxStrikes: Int = 3
+
+    /// Time window for strikes to accumulate (seconds).
+    private let strikeTimeWindow: TimeInterval = 10.0
+
+    // MARK: - Strike tracking
+    private var lastMissTime: Date?
+    private var strikeResetTimer: Timer?
 
     // MARK: - Initialization
 
@@ -170,8 +183,12 @@ final class GameEngine: ObservableObject {
         score = 0
         lives = 3
         streak = 0
+        strikes = 0
         perGateDuration = 2.0
         isGameOver = false
+        lastMissTime = nil
+        strikeResetTimer?.invalidate()
+        strikeResetTimer = nil
         loadHighScore()
         // Prepare daily RNG if requested
         if isDailyChallenge {
@@ -236,6 +253,9 @@ final class GameEngine: ObservableObject {
         guard !isGameOver else { return }
 
         streak += 1
+        // Reset strikes on successful hit
+        resetStrikes()
+        
         // Reward grows with streak: base 1 point plus current streak bonus.
         let pointsEarned = 1 + streak
         score += pointsEarned
@@ -268,6 +288,34 @@ final class GameEngine: ObservableObject {
     func registerMiss() {
         guard !isGameOver else { return }
         streak = 0
+        
+        // Strike system logic
+        let now = Date()
+        
+        // Check if this miss is within the strike time window
+        if let lastMiss = lastMissTime,
+           now.timeIntervalSince(lastMiss) <= strikeTimeWindow {
+            strikes += 1
+        } else {
+            // First miss or outside time window, reset strikes
+            strikes = 1
+        }
+        
+        lastMissTime = now
+        
+        // Reset strike timer
+        strikeResetTimer?.invalidate()
+        strikeResetTimer = Timer.scheduledTimer(withTimeInterval: strikeTimeWindow, repeats: false) { [weak self] _ in
+            self?.resetStrikes()
+        }
+        
+        // Check for strikeout (3 strikes = immediate game over)
+        if strikes >= maxStrikes {
+            endGame()
+            return
+        }
+        
+        // Regular lives system
         lives = max(0, lives - 1)
         if lives == 0 {
             endGame()
@@ -277,6 +325,16 @@ final class GameEngine: ObservableObject {
     /// Returns true when `ringAngle` is aligned with `gateAngle` within tolerance.
     func isAligned() -> Bool {
         return abs(Self.angleDifference(from: ringAngle, to: gateAngle)) <= hitToleranceDegrees
+    }
+
+    // MARK: - Strike system helpers
+    
+    /// Reset strikes to zero and cancel any pending reset timer.
+    private func resetStrikes() {
+        strikes = 0
+        lastMissTime = nil
+        strikeResetTimer?.invalidate()
+        strikeResetTimer = nil
     }
 
     // MARK: - Pure / static helpers (unit-testable)

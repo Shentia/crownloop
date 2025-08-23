@@ -102,4 +102,34 @@ final class GameEngineTests: XCTestCase {
         // We'll at least verify seeds equal and non-zero
         XCTAssertNotEqual(s1, 0)
     }
+    
+    func testStrikeSystem() {
+        let e = GameEngine()
+        e.startNewGame()
+        XCTAssertEqual(e.strikes, 0)
+        
+        // First miss should give 1 strike
+        e.registerMiss()
+        XCTAssertEqual(e.strikes, 1)
+        XCTAssertEqual(e.lives, 2)
+        XCTAssertFalse(e.isGameOver)
+        
+        // Second quick miss should give 2 strikes
+        e.registerMiss()
+        XCTAssertEqual(e.strikes, 2)
+        XCTAssertEqual(e.lives, 1)
+        XCTAssertFalse(e.isGameOver)
+        
+        // Third quick miss should trigger strikeout
+        e.registerMiss()
+        XCTAssertEqual(e.strikes, 3)
+        XCTAssertTrue(e.isGameOver)
+        
+        // Test strike reset on hit
+        e.startNewGame()
+        e.registerMiss()
+        XCTAssertEqual(e.strikes, 1)
+        e.registerHit()
+        XCTAssertEqual(e.strikes, 0)
+    }
 }

@@ -6,6 +6,7 @@ public final class GameEngine {
     public private(set) var score: Int = 0
     public private(set) var lives: Int = 3
     public private(set) var streak: Int = 0
+    public private(set) var strikes: Int = 0
     public private(set) var highScore: Int = 0
 
     public var ringAngle: Double = 0
@@ -19,6 +20,13 @@ public final class GameEngine {
     public let perGateReduction: TimeInterval = 0.2
     public let pointsPerDifficultyStep: Int = 10
     public let hitToleranceDegrees: Double = 8.0
+    
+    // Strike system constants
+    public let maxStrikes: Int = 3
+    public let strikeTimeWindow: TimeInterval = 10.0
+    
+    // Strike tracking
+    private var lastMissTime: Date?
 
     public init() {}
 
@@ -28,8 +36,10 @@ public final class GameEngine {
         score = 0
         lives = 3
         streak = 0
+        strikes = 0
         perGateDuration = 2.0
         isGameOver = false
+        lastMissTime = nil
         nextGate()
     }
 
@@ -37,6 +47,9 @@ public final class GameEngine {
         guard !isGameOver else { return }
         score += 1
         streak += 1
+        // Reset strikes on successful hit
+        strikes = 0
+        lastMissTime = nil
         // bonus at multiples of 5
         if streak % 5 == 0 {
             score += 1
@@ -47,6 +60,25 @@ public final class GameEngine {
     public func registerMiss() {
         guard !isGameOver else { return }
         streak = 0
+        
+        // Strike system logic (simplified for tests - no timer needed)
+        let now = Date()
+        
+        if let lastMiss = lastMissTime,
+           now.timeIntervalSince(lastMiss) <= strikeTimeWindow {
+            strikes += 1
+        } else {
+            strikes = 1
+        }
+        
+        lastMissTime = now
+        
+        // Check for strikeout
+        if strikes >= maxStrikes {
+            isGameOver = true
+            return
+        }
+        
         lives = max(0, lives - 1)
         if lives == 0 {
             isGameOver = true

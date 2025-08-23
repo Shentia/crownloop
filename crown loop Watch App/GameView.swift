@@ -60,11 +60,12 @@ struct GameView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                    // HUD separated to avoid redrawing the entire play area on score/lives updates.
+                    // HUD positioned at the bottom below the game circles
                     VStack {
-                        GameHUD(score: engine.score, streak: engine.streak, lives: engine.lives)
-                            .padding(.horizontal, 10)
                         Spacer()
+                        GameHUD(score: engine.score, streak: engine.streak, lives: engine.lives, strikes: engine.strikes)
+                            .padding(.horizontal, 16)
+                            .padding(.bottom, 8)
                     }
 
                     if engine.isGameOver {
@@ -74,8 +75,8 @@ struct GameView: View {
                                 .font(.caption2)
                                 .foregroundColor(.white.opacity(0.85))
                                 .multilineTextAlignment(.center)
-                                .padding(.horizontal, 12)
-                                .padding(.bottom, 6)
+                                .padding(.horizontal, 16)
+                                .padding(.bottom, 60) // More space from bottom to avoid HUD overlap
                         }
                     }
 
@@ -237,45 +238,84 @@ struct GameHUD: View {
     let score: Int
     let streak: Int
     let lives: Int
+    let strikes: Int
 
     var body: some View {
-        HStack(alignment: .center, spacing: 10) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text("Score")
-                    .font(.caption2)
-                    .foregroundColor(.white.opacity(0.75))
-                Text("\(score)")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                    .foregroundColor(.white)
-            }
-
-            Spacer()
-
-            VStack(alignment: .center, spacing: 2) {
-                Text("Streak")
-                    .font(.caption2)
-                    .foregroundColor(.white.opacity(0.75))
-                HStack(spacing: 4) {
-                    Image(systemName: "flame.fill")
-                        .foregroundColor(.orange)
-                        .font(.caption)
-                    Text("\(streak)")
-                        .font(.subheadline)
+        VStack(spacing: 8) {
+            // Top row: Score and Streak
+            HStack(alignment: .center, spacing: 20) {
+                // Score - left side
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("SCORE")
+                        .font(.caption2)
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(0.3)
+                    Text("\(score)")
+                        .font(.headline)
+                        .fontWeight(.bold)
                         .foregroundColor(.white)
+                        .monospacedDigit()
+                }
+                
+                Spacer()
+
+                // Streak - right side
+                VStack(alignment: .trailing, spacing: 1) {
+                    Text("STREAK")
+                        .font(.caption2)
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(0.3)
+                    HStack(spacing: 3) {
+                        Text("\(streak)")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .monospacedDigit()
+                        Image(systemName: "flame.fill")
+                            .foregroundColor(.orange)
+                            .font(.system(size: 12, weight: .medium))
+                    }
                 }
             }
-
-            Spacer()
-
-            HStack(spacing: 6) {
-                ForEach(0..<3) { idx in
-                    let filled = idx < lives
-                    Image(systemName: filled ? "heart.fill" : "heart")
-                        .foregroundColor(filled ? .pink : .white.opacity(0.25))
-                        .font(.caption)
+            
+            // Bottom row: Lives and Strikes
+            HStack(alignment: .center, spacing: 20) {
+                // Lives - left side
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("LIVES")
+                        .font(.caption2)
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(0.3)
+                    HStack(spacing: 3) {
+                        ForEach(0..<3) { idx in
+                            let filled = idx < lives
+                            Image(systemName: filled ? "heart.fill" : "heart")
+                                .foregroundColor(filled ? .red : .white.opacity(0.3))
+                                .font(.system(size: 11, weight: .medium))
+                        }
+                    }
+                }
+                
+                Spacer()
+                
+                // Strikes - right side
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text("STRIKES")
+                        .font(.caption2)
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(0.3)
+                    HStack(spacing: 3) {
+                        ForEach(0..<3) { idx in
+                            let filled = idx < strikes
+                            Image(systemName: filled ? "xmark.circle.fill" : "xmark.circle")
+                                .foregroundColor(filled ? .yellow : .white.opacity(0.3))
+                                .font(.system(size: 11, weight: .medium))
+                        }
+                    }
                 }
             }
         }
+        .padding(.horizontal, 8)
+        .padding(.vertical, 8)
     }
 }
