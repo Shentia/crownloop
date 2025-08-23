@@ -4,6 +4,8 @@ struct SettingsView: View {
     @AppStorage("hapticsEnabled") private var hapticsEnabled: Bool = true
     @AppStorage("invertCrown") private var invertCrown: Bool = false
     @State private var showingRules = false
+    @State private var showingStrikeHistory = false
+    @ObservedObject var engine: GameEngine
 
     var body: some View {
         ScrollView {
@@ -43,6 +45,24 @@ struct SettingsView: View {
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
+                    
+                    Button(action: { showingStrikeHistory = true }) {
+                        HStack {
+                            Text("Strike History")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            Spacer()
+                            HStack(spacing: 4) {
+                                Text("(\(engine.strikeHistory.count))")
+                                    .font(.caption)
+                                    .foregroundColor(.white.opacity(0.6))
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.white.opacity(0.6))
+                                    .font(.caption)
+                            }
+                        }
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
                 
                 Spacer()
@@ -52,6 +72,9 @@ struct SettingsView: View {
         .background(Color.black)
         .sheet(isPresented: $showingRules) {
             RulesView()
+        }
+        .sheet(isPresented: $showingStrikeHistory) {
+            StrikeHistoryView(engine: engine)
         }
     }
 }
@@ -167,5 +190,158 @@ struct RulesView: View {
             .navigationTitle("Game Rules")
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+struct StrikeHistoryView: View {
+    @ObservedObject var engine: GameEngine
+    @Environment(\.dismiss) private var dismiss
+    @State private var showingClearAlert = false
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 12) {
+                    if engine.strikeHistory.isEmpty {
+                        // Empty state
+                        VStack(spacing: 16) {
+                            Image(systemName: "clock.badge.xmark")
+                                .font(.system(size: 40))
+                                .foregroundColor(.white.opacity(0.6))
+                            
+                            Text("No Strikes Yet")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            Text("Your strike history will appear here as you play")
+                                .font(.subheadline)
+                                .foregroundColor(.white.opacity(0.7))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                        }
+                        .padding(.top, 40)
+                    } else {
+                        // Strike history list
+                        LazyVStack(spacing: 8) {
+                            ForEach(engine.strikeHistory) { strike in
+                                StrikeHistoryRow(strike: strike)
+                            }
+                        }
+                        .padding(.horizontal, 8)
+                        
+                        // Clear history button
+                        Button(action: { showingClearAlert = true }) {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .font(.system(size: 14))
+                                Text("Clear History")
+                                    .font(.subheadline)
+                            }
+                            .foregroundColor(.red)
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.red.opacity(0.3), lineWidth: 1)
+                            )
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.top, 16)
+                    }
+                    
+                    // Done button
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .font(.headline)
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 24)
+                    .background(Capsule().fill(Color.white))
+                    .foregroundColor(.black)
+                    .padding(.top, 20)
+                    
+                    Spacer(minLength: 20)
+                }
+                .padding()
+            }
+            .background(Color.black)
+            .navigationTitle("Strike History")
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .alert("Clear Strike History", isPresented: $showingClearAlert) {
+            Button("Cancel", role: .cancel) { }
+            Button("Clear", role: .destructive) {
+                engine.clearStrikeHistory()
+            }
+        } message: {
+            Text("This will permanently delete all strike records.")
+        }
+    }
+}
+
+struct StrikeHistoryRow: View {
+    let strike: GameEngine.StrikeRecord
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            // Strike indicator
+            VStack(spacing: 2) {
+                Image(systemName: strike.wasGameEnder ? "xmark.circle.fill" : "exclamationmark.triangle.fill")
+                    .foregroundColor(strike.wasGameEnder ? .red : .yellow)
+                    .font(.system(size: 16, weight: .medium))
+                
+                Text("\(strike.strikeNumber)")
+                    .font(.caption2)
+                    .foregroundColor(.white.opacity(0.8))
+            }
+            .frame(width: 24)
+            
+            // Strike details
+            VStack(alignment: .leading, spacing: 2) {
+                HStack {
+                    Text(dateFormatter.string(from: strike.date))
+                        .font(.caption)
+                        .foregroundColor(.white.opacity(0.9))
+                    
+                    Spacer()
+                    
+                    if strike.wasGameEnder {
+                        Text("GAME OVER")
+                            .font(.caption2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(Color.red.opacity(0.2))
+                            )
+                    }
+                }
+                
+                Text("Score: \(strike.gameScore) • Strike #\(strike.strikeNumber)")
+                    .font(.caption2)
+                    .foregroundColor(.white.opacity(0.7))
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color.white.opacity(0.05))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(strike.wasGameEnder ? Color.red.opacity(0.3) : Color.yellow.opacity(0.2), lineWidth: 1)
+                )
+        )
     }
 }

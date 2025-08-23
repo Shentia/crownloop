@@ -53,7 +53,7 @@ struct MainMenuView: View {
                     .foregroundColor(.black)
                 }
 
-                NavigationLink(destination: SettingsView()) {
+                NavigationLink(destination: SettingsView(engine: engine)) {
                     Text("Settings")
                         .font(.caption)
                         .foregroundColor(.white.opacity(0.9))

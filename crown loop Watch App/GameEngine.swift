@@ -80,6 +80,7 @@ final class GameEngine: ObservableObject {
     private static let skinKey = "ringSkin"
     private static let dailyBestKey = "dailyBest"
     private static let dailyBestDateKey = "dailyBestDate"
+    private static let strikeHistoryKey = "strikeHistory"
 
     /// Base per-gate duration which will be reduced as difficulty increases.
     private(set) var perGateDuration: TimeInterval = 2.0
@@ -105,6 +106,18 @@ final class GameEngine: ObservableObject {
     // MARK: - Strike tracking
     private var lastMissTime: Date?
     private var strikeResetTimer: Timer?
+    
+    /// Strike history for tracking last 10 strikes
+    @Published var strikeHistory: [StrikeRecord] = []
+    
+    /// Strike record structure
+    struct StrikeRecord: Identifiable, Codable {
+        let id = UUID()
+        let date: Date
+        let gameScore: Int
+        let strikeNumber: Int // 1, 2, or 3
+        let wasGameEnder: Bool // true if this was the 3rd strike that ended the game
+    }
 
     // MARK: - Initialization
 
@@ -112,6 +125,7 @@ final class GameEngine: ObservableObject {
         loadHighScore()
         loadSkin()
         loadDailyBest()
+        loadStrikeHistory()
     }
 
     // MARK: - Daily challenge helpers
@@ -303,6 +317,16 @@ final class GameEngine: ObservableObject {
         
         lastMissTime = now
         
+        // Record the strike in history
+        let wasGameEnder = (strikes >= maxStrikes)
+        let strikeRecord = StrikeRecord(
+            date: now,
+            gameScore: score,
+            strikeNumber: strikes,
+            wasGameEnder: wasGameEnder
+        )
+        addStrikeToHistory(strikeRecord)
+        
         // Reset strike timer
         strikeResetTimer?.invalidate()
         strikeResetTimer = Timer.scheduledTimer(withTimeInterval: strikeTimeWindow, repeats: false) { [weak self] _ in
@@ -425,5 +449,43 @@ final class GameEngine: ObservableObject {
         if targetDuration < perGateDuration {
             perGateDuration = targetDuration
         }
+    }
+    
+    // MARK: - Strike History Management
+    
+    private func loadStrikeHistory() {
+        if let data = UserDefaults.standard.data(forKey: Self.strikeHistoryKey) {
+            do {
+                strikeHistory = try JSONDecoder().decode([StrikeRecord].self, from: data)
+            } catch {
+                strikeHistory = []
+            }
+        } else {
+            strikeHistory = []
+        }
+    }
+    
+    private func saveStrikeHistory() {
+        do {
+            let data = try JSONEncoder().encode(strikeHistory)
+            UserDefaults.standard.set(data, forKey: Self.strikeHistoryKey)
+        } catch {
+            // Handle encoding error silently
+        }
+    }
+    
+    private func addStrikeToHistory(_ strike: StrikeRecord) {
+        strikeHistory.insert(strike, at: 0) // Add to beginning
+        // Keep only last 10 strikes
+        if strikeHistory.count > 10 {
+            strikeHistory = Array(strikeHistory.prefix(10))
+        }
+        saveStrikeHistory()
+    }
+    
+    /// Clear all strike history (for settings page)
+    func clearStrikeHistory() {
+        strikeHistory = []
+        saveStrikeHistory()
     }
 }
