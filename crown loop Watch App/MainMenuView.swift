@@ -2,12 +2,13 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var engine: GameEngine
-    @State private var isPlaying: Bool = false
     @State private var showGKError: Bool = false
+    @State private var showingGame = false
+    @State private var showingSettings = false
     private let gk = GameCenterManager.shared
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 12) {
                 Spacer()
                 Text("Crown Loop")
@@ -40,24 +41,22 @@ struct MainMenuView: View {
 
                 Spacer()
 
-                NavigationLink(destination: GameView(engine: engine), isActive: $isPlaying) {
-                    Button("Start") {
-                        engine.startNewGame()
-                        engine.nextGate()
-                        isPlaying = true
-                    }
-                    .font(.headline)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 20)
-                    .background(Capsule().fill(Color.white))
-                    .foregroundColor(.black)
+                Button("Start") {
+                    engine.startNewGame()
+                    engine.nextGate()
+                    showingGame = true
                 }
+                .font(.headline)
+                .padding(.vertical, 10)
+                .padding(.horizontal, 20)
+                .background(Capsule().fill(Color.white))
+                .foregroundColor(.black)
 
-                NavigationLink(destination: SettingsView(engine: engine)) {
-                    Text("Settings")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.9))
+                Button("Settings") {
+                    showingSettings = true
                 }
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.9))
 
                 Button(action: {
                     if gk.isAuthenticated {
@@ -78,6 +77,12 @@ struct MainMenuView: View {
             }
             .padding()
             .background(Color.black)
+            .navigationDestination(isPresented: $showingGame) {
+                GameView(engine: engine)
+            }
+            .navigationDestination(isPresented: $showingSettings) {
+                SettingsView(engine: engine)
+            }
         }
     }
 }

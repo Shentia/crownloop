@@ -112,11 +112,19 @@ final class GameEngine: ObservableObject {
     
     /// Strike record structure
     struct StrikeRecord: Identifiable, Codable {
-        let id = UUID()
+        let id: UUID
         let date: Date
         let gameScore: Int
         let strikeNumber: Int // 1, 2, or 3
         let wasGameEnder: Bool // true if this was the 3rd strike that ended the game
+        
+        init(date: Date, gameScore: Int, strikeNumber: Int, wasGameEnder: Bool) {
+            self.id = UUID()
+            self.date = date
+            self.gameScore = gameScore
+            self.strikeNumber = strikeNumber
+            self.wasGameEnder = wasGameEnder
+        }
     }
 
     // MARK: - Initialization

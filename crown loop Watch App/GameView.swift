@@ -102,7 +102,7 @@ struct GameView: View {
                 .onAppear {
                     lastTimelineDate = timeline.date
                 }
-                .onChange(of: timeline.date) { now in
+                .onChange(of: timeline.date) { _, now in
                     let delta: TimeInterval
                     if let last = lastTimelineDate {
                         delta = now.timeIntervalSince(last)
@@ -126,7 +126,7 @@ struct GameView: View {
                 .focusable(true)
                 .digitalCrownRotation(bindingForRingAngle(engine: engine), from: 0, through: 360, by: 1)
                 // Haptics + animations respond to changes; keep these handlers shallow and time-limited.
-                .onChange(of: engine.score) { new in
+                .onChange(of: engine.score) { _, new in
                     if new > prevScore {
                         if Haptics.enabled { Haptics.successHit() }
                         withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
@@ -142,7 +142,7 @@ struct GameView: View {
                     }
                     prevScore = new
                 }
-                .onChange(of: engine.lives) { new in
+                .onChange(of: engine.lives) { _, new in
                     if new < prevLives {
                         if Haptics.enabled { Haptics.missLife() }
                         missFlash = true
@@ -152,7 +152,7 @@ struct GameView: View {
                     }
                     prevLives = new
                 }
-                .onChange(of: engine.highScore) { new in
+                .onChange(of: engine.highScore) { _, new in
                     guard Haptics.enabled else { prevHighScore = new; return }
                     if new > prevHighScore {
                         Haptics.newHighScore()
@@ -218,9 +218,9 @@ struct PlayAreaView: View {
         ZStack {
             RingView(ringAngle: ringAngle, diameter: diameter, lineWidth: 12, skin: skin, scale: ringScale, pulse: ringPulse)
             GateView(gateAngle: gateAngle, diameter: diameter, segmentDegrees: 20, skin: skin, progress: timerProgress)
-                .onChange(of: gateAngle) { _ in hasScoredCurrentGate = false }
+                .onChange(of: gateAngle) { _, _ in hasScoredCurrentGate = false }
                 .onAppear { hasScoredCurrentGate = false }
-                .onChange(of: ringAngle) { _ in
+                .onChange(of: ringAngle) { _, _ in
                     guard !hasScoredCurrentGate, !isGameOver else { return }
                     if onAlignedCheck() {
                         hasScoredCurrentGate = true
